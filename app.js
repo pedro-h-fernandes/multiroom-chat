@@ -2,11 +2,13 @@
 const app = require('./config/server');
 
 /* parametrizar porta de escuta */
-const server = app.listen(80, function(){
+const server = app.listen(3000, function(){
     console.log('Servidor online');
 })
 
 const io = require('socket.io')(server);
+
+app.set('io', io); // cria variavel global io pora ser acessada em qualquer lugar do projeto
 
 //criar a conexao por websocket
 
