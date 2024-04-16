@@ -19,14 +19,14 @@ io.on('connection', function(socket){
         console.log('Usuario desconectou');
     });
 
-    // socket.on('msgParaServidor', function(data){
-    //     socket.emit('msgParaCliente', {apelido: data.apelido, mensagem: data.mensagem});
+    socket.on('msgParaServidor', function(data){
+        socket.emit('msgParaCliente', {apelido: data.apelido, msg: data.msg});  //envia a msg pro cliente que enviou a msg
 
-    //     socket.broadcast.emit('msgParaCliente', {apelido: data.apelido, mensagem: data.mensagem});
+        socket.broadcast.emit('msgParaCliente', {apelido: data.apelido, msg: data.msg}); // envia para todos os usuarios do chat
 
     //     if(parseInt(data.apelido_atualizado_nos_clientes) == 0){
     //         socket.emit('participantesParaCliente', {apelido: data.apelido});
     //         socket.broadcast.emit('participantesParaCliente', {apelido: data.apelido});
     //     }
-    // });
+    });
 });

@@ -14,5 +14,5 @@ module.exports.iniciaChat = (application, req, res) => {
 
   application.get("io").emit("msgParaCliente", { apelido: dadosForm.apelido, msg: 'Acabou de entrar no chat' }); // recupera a variavel global setada em app.js
 
-  res.render("chat");
+  res.render("chat", {dadosForm: dadosForm});
 };
